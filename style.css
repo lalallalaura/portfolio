@@ -10,6 +10,7 @@
 
 .subtitulo {
   color: #ffffff;
+  font-size:15px;
 }
 
 body {
@@ -69,3 +70,4 @@ footer {
   letter-spacing: 0.5px;
   background-color: black;
 }
+
