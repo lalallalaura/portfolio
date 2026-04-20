@@ -1,135 +1,238 @@
+/* Importação de Fonte e Ícones */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+@import url('https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css');
 
 :root {
-  --bg: #0f0f0f;
-  --text: #ffffff;
-  --primary: #990000;
+    --primary: #1a1a1a;    /* Preto moderno */
+    --accent: #ff4757;     /* Cor de destaque (mude se preferir) */
+    --bg: #f9f9f9;         /* Fundo levemente cinza */
+    --white: #ffffff;
+    --text-muted: #666;
+    --transition: all 0.3s ease;
 }
 
-.titulo {
-  font-size: 3.8rem;
-  font-weight: 700;
-  letter-spacing: -1px;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
 }
 
-
-.subtitle {
-  color: #ffffff;
-  font-size:15px;
-}
-
-/* BASE */
 body {
-  background: var(--bg);
-  color: var(--text);
-  font-family: 'Inter', sans-serif;
-  padding-top: 70px;
-  transition: 0.4s;
-  padding-bottom: 60px;
+    background-color: var(--bg);
+    color: var(--primary);
 }
 
-.navbar-custom {
-  background: transparent;
-}
-
+/* NAVBAR */
 .navbar {
-  background: transparent;
-  transition: 0.3s;
+    background: var(--white);
+    padding: 1.2rem 5%;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
 }
 
-.navbar.scrolled {
-  background: rgba(15,15,15,0.9);
-  backdrop-filter: blur(15px);
-  box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+.nav-container {
+    max-width: 1300px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
 }
 
-body.light .navbar {
-  background: rgba(255,255,255,0.8);
+.logo {
+    font-size: 1.6rem;
+    font-weight: 700;
+    text-decoration: none;
+    color: var(--primary);
+    letter-spacing: -1px;
 }
 
-.navbar.scrolled {
-  backdrop-filter: blur(15px);
+.logo span {
+    color: var(--accent);
 }
 
-.navbar-brand {
-  color: var(--text);
-  font-weight: bold;
+.nav-links {
+    display: flex;
+    list-style: none;
+    gap: 25px;
 }
 
-.nav-link {
-  color: var(--text);
+.nav-links a {
+    text-decoration: none;
+    color: var(--primary);
+    font-weight: 500;
+    font-size: 0.95rem;
+    transition: var(--transition);
 }
 
-.nav-link:hover {
-  color: var(--primary) !important;
+.nav-links a:hover {
+    color: var(--accent);
 }
 
-.nav-link {
-  position: relative;
-  color: var(--text);
-}
-.navbar-toggler {
-  border-color: #fff;
-}
-
-.navbar-toggler-icon {
-  filter: invert(1);
-}
-
-.navbar-brand,
-.nav-link {
-  color: var(--text) !important;
+/* BARRA DE BUSCA */
+.search-bar {
+    flex: 1;
+    max-width: 400px;
+    display: flex;
+    align-items: center;
+    background: #eee;
+    padding: 8px 15px;
+    border-radius: 8px;
 }
 
-/* HERO */
+.search-bar input {
+    width: 100%;
+    border: none;
+    background: transparent;
+    outline: none;
+    padding-right: 10px;
+}
+
+/* AÇÕES */
+.nav-actions {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.nav-actions i {
+    font-size: 1.5rem;
+    color: var(--primary);
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.nav-actions i:hover {
+    color: var(--accent);
+}
+
+.cart {
+    position: relative;
+    text-decoration: none;
+}
+
+.cart .count {
+    position: absolute;
+    top: -8px;
+    right: -10px;
+    background: var(--accent);
+    color: white;
+    font-size: 0.7rem;
+    font-weight: bold;
+    padding: 2px 6px;
+    border-radius: 50%;
+}
+
+/* CONTEÚDO PRINCIPAL */
+.container {
+    max-width: 1300px;
+    margin: 40px auto;
+    padding: 0 5%;
+}
+
 .hero {
-  height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: relative;
+    text-align: center;
+    margin-bottom: 50px;
 }
 
-.hero-glow {
-  position: absolute;
-  width: 500px;
-  height: 500px;
-  background: var(--primary);
-  filter: blur(150px);
-  opacity: 0.3;
+.hero h1 {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
 }
 
-/* FADE */
-.fade-in {
-  opacity: 0;
-  transform: translateY(40px);
+.hero p {
+    color: var(--text-muted);
 }
 
-.fade-in.show {
-  opacity: 1;
-  transform: translateY(0);
-  transition: 0.8s;
+/* GRADE DE PRODUTOS */
+.products-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 30px;
 }
 
-
-
-.card {
-  background-color: #3b3a39;
-  color: #fff;
-}
-.card:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 10px 30px rgba(255, 255, 255, 0.1);
-}
-.card-body {
-  background-color: #3b3a39;
-  color: #fff;
-}
-/* Rodapé */
-footer {
-  text-align: center;
-  font-size: 0.9rem;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; color: rgb(255, 255, 255);
-  letter-spacing: 0.5px;
-  background-color: black;
+.product-card {
+    background: var(--white);
+    border-radius: 12px;
+    overflow: hidden;
+    transition: var(--transition);
+    border: 1px solid #eee;
 }
 
+.product-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+}
+
+.product-image {
+    position: relative;
+    height: 300px;
+    background: #f0f0f0;
+    overflow: hidden;
+}
+
+.product-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.tag {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background: var(--primary);
+    color: white;
+    font-size: 0.7rem;
+    padding: 4px 10px;
+    border-radius: 4px;
+    text-transform: uppercase;
+}
+
+.add-to-cart {
+    position: absolute;
+    bottom: -50px; /* Escondido inicialmente */
+    left: 0;
+    width: 100%;
+    padding: 15px;
+    background: var(--primary);
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-weight: 600;
+    transition: var(--transition);
+}
+
+.product-card:hover .add-to-cart {
+    bottom: 0;
+}
+
+.product-info {
+    padding: 20px;
+}
+
+.product-info h3 {
+    font-size: 1rem;
+    margin-bottom: 8px;
+    color: var(--primary);
+}
+
+.price {
+    font-weight: 700;
+    color: var(--accent);
+    font-size: 1.1rem;
+}
+
+/* RESPONSIVIDADE */
+@media (max-width: 768px) {
+    .nav-links, .search-bar {
+        display: none; /* Esconde para mobile (precisaria de um menu hamburguer) */
+    }
+    
+    .hero h1 {
+        font-size: 1.8rem;
+    }
+}
