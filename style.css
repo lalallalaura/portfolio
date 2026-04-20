@@ -19,10 +19,10 @@
 }
 
 body {
-    background: linear-gradient(135deg, #1f1c2c 0%, #928dab 100%);
-    background-attachment: fixed; /* Mantém o fundo parado enquanto você rola */
+    /* Um degradê bem suave que vai do branco para um cinza azulado muito leve */
+    background: radial-gradient(circle, #ffffff 0%, #e8eef2 100%);
+    background-attachment: fixed;
     min-height: 100vh;
-    margin: 0;
 }
 
 /* NAVBAR */
@@ -234,6 +234,14 @@ body {
     border: none !important;
     border-radius: 15px !important;
     overflow: hidden;
+}
+
+.product-card {
+    border: none !important;
+    background: rgba(255, 255, 255, 0.9); /* Branco levemente transparente */
+    backdrop-filter: blur(5px); /* Efeito de vidro */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05) !important; /* Sombra bem leve */
+    border-radius: 20px !important;
 }
 
 .product-card:hover {
