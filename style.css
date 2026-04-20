@@ -225,6 +225,72 @@ body {
     color: var(--accent);
     font-size: 1.1rem;
 }
+/* Estilo para os cards de produto */
+.product-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: none !important;
+    border-radius: 15px !important;
+    overflow: hidden;
+}
+
+.product-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.1) !important;
+}
+
+.product-card img {
+    height: 250px;
+    object-fit: cover; /* Faz a imagem preencher o espaço sem distorcer */
+}
+
+/* Container de Preços */
+.price-container {
+    margin-top: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.price-old {
+    text-decoration: line-through;
+    color: #999;
+    font-size: 0.85rem;
+}
+
+.price-current {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: #ff4757; /* Cor de destaque para o preço */
+}
+
+/* Botão de Compra */
+.btn-buy {
+    border-radius: 25px !important;
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    letter-spacing: 1px;
+    transition: 0.3s;
+}
+
+.btn-buy:hover {
+    background-color: #ff4757 !important; /* Muda para a cor de destaque ao passar o mouse */
+    border-color: #ff4757 !important;
+}
+
+/* Selo de "Novo" */
+.badge-new {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: #2ecc71;
+    color: white;
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-size: 0.7rem;
+    font-weight: bold;
+    z-index: 10;
+}
 
 /* RESPONSIVIDADE */
 @media (max-width: 768px) {
