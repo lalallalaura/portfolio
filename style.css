@@ -5,7 +5,7 @@
 :root {
     --primary: #1a1a1a;    /* Preto moderno */
     --accent: #ff4757;     /* Cor de destaque (mude se preferir) */
-    --bg: #f9f9f9;         /* Fundo levemente cinza */
+    --bg: ##1f1e1e;         /* Fundo levemente cinza */
     --white: #ffffff;
     --text-muted: #666;
     --transition: all 0.3s ease;
