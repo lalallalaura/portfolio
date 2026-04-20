@@ -42,6 +42,36 @@ body {
   color: #000bd9 !important;
 }
 
+/* HERO */
+.hero {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.hero-glow {
+  position: absolute;
+  width: 500px;
+  height: 500px;
+  background: var(--primary);
+  filter: blur(150px);
+  opacity: 0.3;
+}
+
+/* FADE */
+.fade-in {
+  opacity: 0;
+  transform: translateY(40px);
+}
+
+.fade-in.show {
+  opacity: 1;
+  transform: translateY(0);
+  transition: 0.8s;
+}
+
 
 
 .card {
