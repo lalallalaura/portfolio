@@ -1,3 +1,10 @@
+
+:root {
+  --bg: #0f0f0f;
+  --text: #ffffff;
+  --primary: #a855f7;
+}
+
 .titulo {
   font-size: 3.8rem;
   font-weight: 700;
@@ -5,7 +12,7 @@
 }
 
 
-.subtitulo {
+.subtitle {
   color: #ffffff;
   font-size:15px;
 }
@@ -20,6 +27,9 @@ body {
   padding-bottom: 60px;
 }
 
+.navbar-custom {
+  background: transparent;
+}
 
 .navbar {
   background: transparent;
@@ -56,6 +66,13 @@ body.light .navbar {
 .nav-link {
   position: relative;
   color: var(--text);
+}
+.navbar-toggler {
+  border-color: #fff;
+}
+
+.navbar-toggler-icon {
+  filter: invert(1);
 }
 
 .navbar-brand,
@@ -96,23 +113,17 @@ body.light .navbar {
 
 
 .card {
-  border: none;
-  border-radius: 20px;
-  overflow: hidden;
   background-color: #1a1a1a;
   color: #fff;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; color: #000000;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 .card:hover {
   transform: translateY(-8px);
   box-shadow: 0 10px 30px rgba(255, 255, 255, 0.1);
 }
-  .card-body {
+.card-body {
   background-color: #ffffff;
-  padding: 20px;
+  color: #000;
 }
-
 /* Rodapé */
 footer {
   text-align: center;
