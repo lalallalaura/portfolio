@@ -27,52 +27,73 @@ body {
 
 /* NAVBAR */
 .navbar {
-    background: rgba(255, 255, 255, 0.8) !important;
-    backdrop-filter: blur(10px); /* Cria aquele efeito de vidro fosco */
-    padding: 1.2rem 5%;
+    background: #ffffff;
+    padding: 0.8rem 5%;
     position: sticky;
     top: 0;
     z-index: 1000;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    box-shadow: 0 2px 15px rgba(0,0,0,0.05);
+    display: flex;
+    justify-content: center; /* Centraliza o container interno */
 }
 
 .nav-container {
+    width: 100%;
     max-width: 1300px;
-    margin: 0 auto;
-    display: flex;
+    display: grid; 
+    /* Criamos 3 colunas iguais: a do meio sempre será o centro real */
+    grid-template-columns: 1fr 2fr 1fr; 
     align-items: center;
-    justify-content: space-between;
-    gap: 20px;
 }
 
 .logo {
-    font-size: 1.6rem;
+    font-size: 1.5rem;
     font-weight: 700;
     text-decoration: none;
-    color: var(--primary);
-    letter-spacing: -1px;
-}
-
-.logo span {
-    color: var(--accent);
+    color: #333;
+    justify-self: start; /* Alinha a logo na esquerda da primeira coluna */
 }
 
 .nav-links {
     display: flex;
     list-style: none;
-    gap: 25px;
+    gap: 30px;
+    justify-self: center; /* Alinha os links no centro da coluna do meio */
+    margin: 0;
+    padding: 0;
 }
 
 .nav-links a {
     text-decoration: none;
-    color: var(--primary);
+    color: #333;
     font-weight: 500;
-    font-size: 0.95rem;
-    transition: var(--transition);
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
 }
 
-.nav-links a:hover {
-    color: var(--accent);
+.nav-actions {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    justify-self: end; /* Alinha os ícones na direita da última coluna */
+}
+
+.nav-actions i {
+    font-size: 1.3rem;
+    color: #333;
+    cursor: pointer;
+}
+
+/* Responsivo: No celular, a grade vira flex comum */
+@media (max-width: 768px) {
+    .nav-container {
+        display: flex;
+        justify-content: space-between;
+    }
+    .nav-links, .search-bar {
+        display: none;
+    }
 }
 
 /* BARRA DE BUSCA */
