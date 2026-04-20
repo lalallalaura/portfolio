@@ -1,136 +1,169 @@
-/* Importação de Fonte e Ícones */
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Creepster&family=Poppins:wght@300;400;700&display=swap');
 @import url('https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css');
 
 :root {
-    --primary: #1a1a1a;    /* Preto moderno */
-    --accent: #ff4757;     /* Cor de destaque (mude se preferir) */
-    --bg: ##1f1e1e;         /* Fundo levemente cinza */
-    --white: #ffffff;
-    --text-muted: #666;
-    --transition: all 0.3s ease;
-}
-
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Poppins', sans-serif;
+    --bg-dark: #0a0a0a;       /* Preto profundo */
+    --bg-card: #161616;       /* Cinza escuro para os cards */
+    --accent: #b20710;        /* Vermelho sangue */
+    --text-primary: #e5e5e5;  /* Branco acinzentado */
+    --text-muted: #888;
 }
 
 body {
-    /* Um degradê bem suave que vai do branco para um cinza azulado muito leve */
-    background: radial-gradient(circle, #ffffff 0%, #e8eef2 100%);
-    background-attachment: fixed;
-    min-height: 100vh;
+    background-color: var(--bg-dark);
+    color: var(--text-primary);
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
 }
 
-/* NAVBAR */
+/* NAVBAR CENTRALIZADA COM GRID */
 .navbar {
-    background: #ffffff;
-    padding: 0.8rem 5%;
+    background: rgba(0, 0, 0, 0.95);
+    border-bottom: 2px solid var(--accent);
+    padding: 1rem 5%;
     position: sticky;
     top: 0;
     z-index: 1000;
-    box-shadow: 0 2px 15px rgba(0,0,0,0.05);
-    display: flex;
-    justify-content: center; /* Centraliza o container interno */
 }
 
 .nav-container {
-    width: 100%;
     max-width: 1300px;
-    display: grid; 
-    /* Criamos 3 colunas iguais: a do meio sempre será o centro real */
-    grid-template-columns: 1fr 2fr 1fr; 
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr; /* Divide em 3 partes iguais */
     align-items: center;
 }
 
 .logo {
-    font-size: 1.5rem;
-    font-weight: 700;
+    font-family: 'Creepster', cursive; /* Fonte de terror */
+    font-size: 1.8rem;
     text-decoration: none;
-    color: #333;
-    justify-self: start; /* Alinha a logo na esquerda da primeira coluna */
+    color: var(--text-primary);
+    justify-self: start;
+}
+
+.logo span {
+    color: var(--accent);
 }
 
 .nav-links {
     display: flex;
     list-style: none;
     gap: 30px;
-    justify-self: center; /* Alinha os links no centro da coluna do meio */
+    justify-self: center; /* CENTRALIZAÇÃO REAL */
     margin: 0;
     padding: 0;
 }
 
 .nav-links a {
     text-decoration: none;
-    color: #333;
-    font-weight: 500;
+    color: var(--text-primary);
     font-size: 0.9rem;
+    font-weight: 500;
     text-transform: uppercase;
     letter-spacing: 1px;
+    transition: 0.3s;
+}
+
+.nav-links a:hover {
+    color: var(--accent);
+    text-shadow: 0 0 8px var(--accent);
 }
 
 .nav-actions {
     display: flex;
-    align-items: center;
     gap: 20px;
-    justify-self: end; /* Alinha os ícones na direita da última coluna */
+    justify-self: end;
 }
 
 .nav-actions i {
-    font-size: 1.3rem;
-    color: #333;
+    font-size: 1.4rem;
+    color: var(--text-primary);
     cursor: pointer;
-}
-
-/* Responsivo: No celular, a grade vira flex comum */
-@media (max-width: 768px) {
-    .nav-container {
-        display: flex;
-        justify-content: space-between;
-    }
-    .nav-links, .search-bar {
-        display: none;
-    }
-}
-
-/* BARRA DE BUSCA */
-.search-bar {
-    flex: 1;
-    max-width: 400px;
-    display: flex;
-    align-items: center;
-    background: #eee;
-    padding: 8px 15px;
-    border-radius: 8px;
-}
-
-.search-bar input {
-    width: 100%;
-    border: none;
-    background: transparent;
-    outline: none;
-    padding-right: 10px;
-}
-
-/* AÇÕES */
-.nav-actions {
-    display: flex;
-    align-items: center;
-    gap: 20px;
-}
-
-.nav-actions i {
-    font-size: 1.5rem;
-    color: var(--primary);
-    cursor: pointer;
-    transition: var(--transition);
+    transition: 0.3s;
 }
 
 .nav-actions i:hover {
     color: var(--accent);
+}
+
+/* CARDS DE PRODUTO */
+.container {
+    margin-top: 50px;
+}
+
+.product-card {
+    background-color: var(--bg-card) !important;
+    border: 1px solid #333 !important;
+    border-radius: 10px !important;
+    transition: 0.4s;
+    overflow: hidden;
+}
+
+.product-card:hover {
+    border-color: var(--accent) !important;
+    transform: translateY(-10px);
+    box-shadow: 0 0 20px rgba(178, 7, 16, 0.3);
+}
+
+.card-img-top {
+    height: 280px;
+    object-fit: cover;
+    filter: grayscale(30%); /* Deixa a imagem mais sombria */
+    transition: 0.4s;
+}
+
+.product-card:hover .card-img-top {
+    filter: grayscale(0%);
+}
+
+.product-title {
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin-bottom: 10px;
+    color: var(--text-primary);
+}
+
+.product-desc {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+}
+
+.price-tag {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--accent);
+    margin: 15px 0;
+}
+
+.btn-buy {
+    background-color: transparent;
+    color: var(--text-primary);
+    border: 1px solid var(--accent);
+    padding: 10px 20px;
+    width: 100%;
+    border-radius: 5px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.btn-buy:hover {
+    background-color: var(--accent);
+    color: white;
+}
+
+.badge-horror {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background: var(--accent);
+    color: white;
+    font-size: 0.7rem;
+    padding: 3px 10px;
+    border-radius: 3px;
+    z-index: 5;
+    font-weight: bold;
 }
 
 .cart {
@@ -138,199 +171,13 @@ body {
     text-decoration: none;
 }
 
-.cart .count {
+.count {
     position: absolute;
-    top: -8px;
+    top: -10px;
     right: -10px;
     background: var(--accent);
     color: white;
     font-size: 0.7rem;
-    font-weight: bold;
     padding: 2px 6px;
     border-radius: 50%;
-}
-
-/* CONTEÚDO PRINCIPAL */
-.container {
-    max-width: 1300px;
-    margin: 40px auto;
-    padding: 0 5%;
-}
-
-.hero {
-    text-align: center;
-    margin-bottom: 50px;
-}
-
-.hero h1 {
-    font-size: 2.5rem;
-    margin-bottom: 10px;
-}
-
-.hero p {
-    color: var(--text-muted);
-}
-
-/* GRADE DE PRODUTOS */
-.products-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-    gap: 30px;
-}
-
-.product-card {
-    background: var(--white);
-    border-radius: 12px;
-    overflow: hidden;
-    transition: var(--transition);
-    border: 1px solid #eee;
-}
-
-.product-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-}
-
-.product-image {
-    position: relative;
-    height: 300px;
-    background: #f0f0f0;
-    overflow: hidden;
-}
-
-.product-image img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-
-.tag {
-    position: absolute;
-    top: 10px;
-    left: 10px;
-    background: var(--primary);
-    color: white;
-    font-size: 0.7rem;
-    padding: 4px 10px;
-    border-radius: 4px;
-    text-transform: uppercase;
-}
-
-.add-to-cart {
-    position: absolute;
-    bottom: -50px; /* Escondido inicialmente */
-    left: 0;
-    width: 100%;
-    padding: 15px;
-    background: var(--primary);
-    color: white;
-    border: none;
-    cursor: pointer;
-    font-weight: 600;
-    transition: var(--transition);
-}
-
-.product-card:hover .add-to-cart {
-    bottom: 0;
-}
-
-.product-info {
-    padding: 20px;
-}
-
-.product-info h3 {
-    font-size: 1rem;
-    margin-bottom: 8px;
-    color: var(--primary);
-}
-
-.price {
-    font-weight: 700;
-    color: var(--accent);
-    font-size: 1.1rem;
-}
-/* Estilo para os cards de produto */
-.product-card {
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    border: none !important;
-    border-radius: 15px !important;
-    overflow: hidden;
-}
-
-.product-card {
-    border: none !important;
-    background: rgba(255, 255, 255, 0.9); /* Branco levemente transparente */
-    backdrop-filter: blur(5px); /* Efeito de vidro */
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05) !important; /* Sombra bem leve */
-    border-radius: 20px !important;
-}
-
-.product-card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 15px 30px rgba(0,0,0,0.1) !important;
-}
-
-.product-card img {
-    height: 250px;
-    object-fit: cover; /* Faz a imagem preencher o espaço sem distorcer */
-}
-
-/* Container de Preços */
-.price-container {
-    margin-top: 15px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.price-old {
-    text-decoration: line-through;
-    color: #999;
-    font-size: 0.85rem;
-}
-
-.price-current {
-    font-size: 1.4rem;
-    font-weight: 700;
-    color: #ff4757; /* Cor de destaque para o preço */
-}
-
-/* Botão de Compra */
-.btn-buy {
-    border-radius: 25px !important;
-    font-weight: 600;
-    text-transform: uppercase;
-    font-size: 0.8rem;
-    letter-spacing: 1px;
-    transition: 0.3s;
-}
-
-.btn-buy:hover {
-    background-color: #ff4757 !important; /* Muda para a cor de destaque ao passar o mouse */
-    border-color: #ff4757 !important;
-}
-
-/* Selo de "Novo" */
-.badge-new {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    background: #2ecc71;
-    color: white;
-    padding: 5px 12px;
-    border-radius: 20px;
-    font-size: 0.7rem;
-    font-weight: bold;
-    z-index: 10;
-}
-
-/* RESPONSIVIDADE */
-@media (max-width: 768px) {
-    .nav-links, .search-bar {
-        display: none; /* Esconde para mobile (precisaria de um menu hamburguer) */
-    }
-    
-    .hero h1 {
-        font-size: 1.8rem;
-    }
 }
