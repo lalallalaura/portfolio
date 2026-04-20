@@ -19,13 +19,16 @@
 }
 
 body {
-    background-color: var(--bg);
-    color: var(--primary);
+    background: linear-gradient(135deg, #1f1c2c 0%, #928dab 100%);
+    background-attachment: fixed; /* Mantém o fundo parado enquanto você rola */
+    min-height: 100vh;
+    margin: 0;
 }
 
 /* NAVBAR */
 .navbar {
-    background: var(--white);
+    background: rgba(255, 255, 255, 0.8) !important;
+    backdrop-filter: blur(10px); /* Cria aquele efeito de vidro fosco */
     padding: 1.2rem 5%;
     position: sticky;
     top: 0;
