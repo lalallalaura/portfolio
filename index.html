@@ -82,6 +82,7 @@
 
     </div>
 </main>
+<div id="cart-overlay" class="cart-overlay"></div>
 <div id="cart-sidebar" class="cart-sidebar">
     <div class="cart-header">
         <h4>Seu Carrinho</h4>
@@ -108,16 +109,16 @@ const cartCount = document.getElementById('cart-count');
 const cartSidebar = document.getElementById('cart-sidebar');
 const cartItems = document.getElementById('cart-items');
 const cartTotal = document.getElementById('cart-total');
+const overlay = document.getElementById('cart-overlay');
 
 // atualizar carrinho
 function updateCart() {
     cartCount.innerText = cart.length;
     localStorage.setItem("cart", JSON.stringify(cart));
-
     renderCart();
 }
 
-// renderizar itens
+// renderizar
 function renderCart() {
     cartItems.innerHTML = "";
 
@@ -140,13 +141,13 @@ function renderCart() {
     cartTotal.innerText = total.toFixed(2);
 }
 
-// remover item
+// remover
 function removeItem(index) {
     cart.splice(index, 1);
     updateCart();
 }
 
-// adicionar produto
+// adicionar
 document.querySelectorAll('.btn-buy').forEach(button => {
     button.addEventListener('click', () => {
         const name = button.dataset.name;
@@ -157,18 +158,24 @@ document.querySelectorAll('.btn-buy').forEach(button => {
     });
 });
 
-// abrir carrinho
+// abrir
 document.querySelector('.cart').addEventListener('click', () => {
     cartSidebar.classList.add('active');
+    overlay.classList.add('active');
 });
 
-// fechar carrinho
-document.getElementById('close-cart').addEventListener('click', () => {
+// fechar
+function closeCart() {
     cartSidebar.classList.remove('active');
-});
+    overlay.classList.remove('active');
+}
 
-// inicializar
+document.getElementById('close-cart').addEventListener('click', closeCart);
+overlay.addEventListener('click', closeCart);
+
+// iniciar
 updateCart();
+
 
 </script>
 
