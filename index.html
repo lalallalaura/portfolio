@@ -25,7 +25,7 @@
             <a href="#"><i class='bx bx-user'></i></a>
             <a href="#" class="cart">
                 <i class='bx bx-shopping-bag'></i>
-                <span class="count">0</span>
+                <span class="count" id="cart-count">0</span>
             </a>
         </div>
     </div>
@@ -34,39 +34,48 @@
 <main class="container mt-5">
     <div class="row text-center">
         
+        <!-- Produto 1 -->
         <div class="col-md-4 mb-4">
             <div class="product-card card h-100">
                 <div class="badge-horror">Limited</div>
-                <img src="https://occ-0-8407-2219.1.nflxso.net/dnm/api/v6/E8vDc_W8CLv7-yMQu8KMEC7Rrr8/AAAABTVGjJlIal3UArZjcFxuPN1HELBAkPbuKCFcAzG65wYnMkJZxcXJkVIbZrHXqKQkbU6FbfJtTdaeqheaaW-au4XaUUSa85B6dGNt.jpg?r=36a" class="card-img-top" alt="Coraline">
+                <img src="https://occ-0-8407-2219.1.nflxso.net/dnm/api/v6/E8vDc_W8CLv7-yMQu8KMEC7Rrr8/AAAABTVGjJlIal3UArZjcFxuPN1HELBAkPbuKCFcAzG65wYnMkJZxcXJkVIbZrHXqKQkbU6FbfJtTdaeqheaaW-au4XaUUSa85B6dGNt.jpg" class="card-img-top">
                 <div class="card-body">
                     <h3 class="product-title">Réplica Coraline</h3>
-                    <p class="product-desc">Boneca com olhos de botão e detalhes em tecido envelhecido.</p>
+                    <p class="product-desc">Boneca com olhos de botão.</p>
                     <div class="price-tag">R$ 199,00</div>
-                    <button class="btn-buy">Adicionar ao Carrinho</button>
+                    <button class="btn-buy" data-name="Réplica Coraline" data-price="199">
+                        Adicionar ao Carrinho
+                    </button>
                 </div>
             </div>
         </div>
 
+        <!-- Produto 2 -->
         <div class="col-md-4 mb-4">
             <div class="product-card card h-100">
-                <img src="https://i.ytimg.com/vi/BXXr7dW51-Y/maxresdefault.jpg" class="card-img-top" alt="Annabelle">
+                <img src="https://i.ytimg.com/vi/BXXr7dW51-Y/maxresdefault.jpg" class="card-img-top">
                 <div class="card-body">
                     <h3 class="product-title">Relíquia Annabelle</h3>
-                    <p class="product-desc">Cópia fiel da boneca guardada no museu dos Warren.</p>
+                    <p class="product-desc">Cópia fiel da boneca.</p>
                     <div class="price-tag">R$ 250,00</div>
-                    <button class="btn-buy">Adicionar ao Carrinho</button>
+                    <button class="btn-buy" data-name="Relíquia Annabelle" data-price="250">
+                        Adicionar ao Carrinho
+                    </button>
                 </div>
             </div>
         </div>
 
+        <!-- Produto 3 -->
         <div class="col-md-4 mb-4">
             <div class="product-card card h-100">
-                <img src="https://ingresso-a.akamaihd.net/b2b/production/uploads/article/image/4088/f8a92516206c383238e00b1cc300ab11.jpg" class="card-img-top" alt="A Noiva Cadáver">
+                <img src="https://ingresso-a.akamaihd.net/b2b/production/uploads/article/image/4088/f8a92516206c383238e00b1cc300ab11.jpg" class="card-img-top">
                 <div class="card-body">
-                    <h3 class="product-title">Poster A Noiva Cadáver</h3>
-                    <p class="product-desc">Poster tamanho A3 com arte original de Tim Burton impresso em papel couchê.</p>
+                    <h3 class="product-title">Poster Noiva Cadáver</h3>
+                    <p class="product-desc">Poster A3.</p>
                     <div class="price-tag">R$ 35,00</div>
-                    <button class="btn-buy">Adicionar ao Carrinho</button>
+                    <button class="btn-buy" data-name="Poster Noiva Cadáver" data-price="35">
+                        Adicionar ao Carrinho
+                    </button>
                 </div>
             </div>
         </div>
@@ -75,34 +84,38 @@
 </main>
 
 <footer class="footer-horror">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-4 mb-4">
-                <a href="#" class="logo footer-logo">TERROR<span>SHOP</span></a>
-                <p class="mt-3 text-muted">A maior loja de colecionáveis de horror do Brasil. Qualidade de outro mundo.</p>
-            </div>
-            
-            <div class="col-md-4 mb-4">
-                <h5>Categorias</h5>
-                <ul class="footer-links">
-                    <li><a href="#">Filmes Clássicos</a></li>
-                    <li><a href="#">Máscaras & Fantasias</a></li>
-                    <li><a href="#">Réplicas de Luxo</a></li>
-                </ul>
-            </div>
-            
-            <div class="col-md-4 mb-4">
-                <h5>Siga-nos</h5>
-                <div class="social-icons">
-                    <a href="#"><i class='bx bxl-instagram'></i></a>
-                    <a href="#"><i class='bx bxl-facebook-square'></i></a>
-                    <a href="#"><i class='bx bxl-youtube'></i></a>
-                </div>
-            </div>
-        </div>
-        <hr class="footer-divider">
-        <p class="copyright">© 2025 Terror Shop - Todos os direitos reservados.</p>
+    <div class="container text-center">
+        <p>© 2025 Terror Shop</p>
     </div>
 </footer>
+
+<script>
+let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+const buttons = document.querySelectorAll('.btn-buy');
+const cartCount = document.getElementById('cart-count');
+
+function updateCart() {
+    cartCount.innerText = cart.length;
+    localStorage.setItem("cart", JSON.stringify(cart));
+}
+
+// carregar ao abrir
+updateCart();
+
+buttons.forEach(button => {
+    button.addEventListener('click', () => {
+        const name = button.dataset.name;
+        const price = button.dataset.price;
+
+        cart.push({ name, price });
+
+        updateCart();
+
+        alert(name + " adicionado ao carrinho 🛒");
+    });
+});
+</script>
+
 </body>
 </html>
