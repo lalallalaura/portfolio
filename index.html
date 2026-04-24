@@ -82,7 +82,19 @@
 
     </div>
 </main>
+<div id="cart-sidebar" class="cart-sidebar">
+    <div class="cart-header">
+        <h4>Seu Carrinho</h4>
+        <button id="close-cart">X</button>
+    </div>
 
+    <div id="cart-items"></div>
+
+    <div class="cart-footer">
+        <h5>Total: R$ <span id="cart-total">0</span></h5>
+        <button class="btn btn-danger w-100">Finalizar Compra</button>
+    </div>
+</div>
 <footer class="footer-horror">
     <div class="container text-center">
         <p>© 2025 Terror Shop</p>
@@ -92,29 +104,72 @@
 <script>
 let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
-const buttons = document.querySelectorAll('.btn-buy');
 const cartCount = document.getElementById('cart-count');
+const cartSidebar = document.getElementById('cart-sidebar');
+const cartItems = document.getElementById('cart-items');
+const cartTotal = document.getElementById('cart-total');
 
+// atualizar carrinho
 function updateCart() {
     cartCount.innerText = cart.length;
     localStorage.setItem("cart", JSON.stringify(cart));
+
+    renderCart();
 }
 
-// carregar ao abrir
-updateCart();
+// renderizar itens
+function renderCart() {
+    cartItems.innerHTML = "";
 
-buttons.forEach(button => {
+    let total = 0;
+
+    cart.forEach((item, index) => {
+        total += Number(item.price);
+
+        cartItems.innerHTML += `
+            <div class="cart-item">
+                <strong>${item.name}</strong>
+                <p>R$ ${item.price}</p>
+                <button onclick="removeItem(${index})" class="btn btn-sm btn-danger">
+                    Remover
+                </button>
+            </div>
+        `;
+    });
+
+    cartTotal.innerText = total.toFixed(2);
+}
+
+// remover item
+function removeItem(index) {
+    cart.splice(index, 1);
+    updateCart();
+}
+
+// adicionar produto
+document.querySelectorAll('.btn-buy').forEach(button => {
     button.addEventListener('click', () => {
         const name = button.dataset.name;
         const price = button.dataset.price;
 
         cart.push({ name, price });
-
         updateCart();
-
-        alert(name + " adicionado ao carrinho 🛒");
     });
 });
+
+// abrir carrinho
+document.querySelector('.cart').addEventListener('click', () => {
+    cartSidebar.classList.add('active');
+});
+
+// fechar carrinho
+document.getElementById('close-cart').addEventListener('click', () => {
+    cartSidebar.classList.remove('active');
+});
+
+// inicializar
+updateCart();
+
 </script>
 
 </body>
